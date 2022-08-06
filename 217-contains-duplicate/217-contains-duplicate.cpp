@@ -10,3 +10,6 @@ public:
         return true;
     }
 };
+
+//TC : O(N)
+//SC : O(N)
