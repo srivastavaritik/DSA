@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int peakIndexInMountainArray(vector<int>& A) {
-        return max_element(A.begin(), A.end()) - A.begin();
+    int peakIndexInMountainArray(vector<int>& arr) {
+        return max_element(arr.begin(), arr.end()) - arr.begin();
     }
 };
