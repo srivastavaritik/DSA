@@ -1,10 +1,10 @@
 class Solution {
 public:
     int orangesRotting(vector<vector<int>>& grid) {
-        int n=grid.size(), m=grid[0].size();
+        int n = grid.size();
+        int m = grid[0].size();
         int vis[n][m];
         queue<pair<pair<int,int>,int>> q;
-        int time = 0;
         for(int i=0;i<n;i++)
         {
             for(int j=0;j<m;j++)
@@ -14,20 +14,21 @@ public:
                     q.push({{i,j},0});
                     vis[i][j]=2;
                 }
-                else{
+                else {
                     vis[i][j]=0;
                 }
             }
         }
-        int drow[] = {-1,0,1,0};
-        int dcol[] = {0,1,0,-1};
+        int tm=0;
+        int drow[] = {-1, 0, 1, 0};
+        int dcol[] = {0, 1, 0, -1};
         while(!q.empty())
         {
             int r = q.front().first.first;
             int c = q.front().first.second;
             int t = q.front().second;
-            time = max(t,time);
             q.pop();
+            tm = max(t,tm);
             for(int i=0;i<4;i++)
             {
                 int nrow = r + drow[i];
@@ -35,11 +36,11 @@ public:
                 if(nrow>=0 and nrow<n and ncol>=0 and ncol<m and vis[nrow][ncol]!=2 and grid[nrow][ncol]==1)
                 {
                     vis[nrow][ncol]=2;
-                    q.push({{nrow, ncol},t+1});
+                    q.push({{nrow,ncol},t+1});
                 }
             }
         }
-        for(int i=0;i<n;i++)
+         for(int i=0;i<n;i++)
         {
             for(int j=0;j<m;j++)
             {
@@ -47,6 +48,8 @@ public:
                     return -1;
             }
         }
-        return time;
+        return tm;
+        
+        
     }
 };
